@@ -14,6 +14,7 @@
 - _grid.scss
   - _name
   - /** Comments */
+  - $variables
 
 ```
 $grid-small: 500px;
@@ -53,7 +54,7 @@ $grid-large: 1000px;
     }
 }
 ```
-
+- @mixins
 ```
 /**
  * BREAKPOINT
@@ -80,20 +81,79 @@ $grid-large: 1000px;
 .outer-container {
     margin: auto;
 
-    @include breakpoint(small) {
-        max-width: $grid-small;
-    }
+    @include breakpoint(small) {max-width: $grid-small;}
+    @include breakpoint(large) {max-width: $grid-large;}
+}
+```
+- BEM
+```
+<div class="product-list outer-container">
+    <div class="product-list__product">
+        <p><img src="//placehold.it/250" alt=""></p>
+    </div>
+    <div class="product-list__product">
+        <p><img src="//placehold.it/250" alt=""></p>
+    </div>
+    <div class="product-list__product">
+        <p><img src="//placehold.it/250" alt=""></p>
+    </div>
+    <div class="product-list__product">
+        <p><img src="//placehold.it/250" alt=""></p>
+    </div>
+</div>
+```
+`modules/_product-list.scss`
+```
+/**
+ * PRODUCT LIST
+ */
+.product-list {
 
-    @include breakpoint(large) {
-        max-width: $grid-large;
+}
+
+    
+    .product-list__product {
+        padding: 15px;
+
+        @include breakpoint(small) {
+            float: left;
+            width: 50%;
+        }
+
+        @include breakpoint(medium) {
+            width: 25%;
+        }
     }
+``` 
+`setup/_mixins.scss`
+```
+/**
+ * MIXINS & UTILITIES
+ */
+
+
+/**
+ * CLEARFIX
+ */
+@mixin clearfix() {
+    &:after {
+        content:"";
+        display:table;
+        clear:both;
+    }
+}
+
+
+
+
+
+/**
+ * UNLIST
+ */
+@mixin unlist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 ```
 
-
-
-$variables
-@mixins
-BEM
-cssguidelin.es
-Modules
