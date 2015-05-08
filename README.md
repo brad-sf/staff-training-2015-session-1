@@ -171,3 +171,9 @@ aside {
     }
 }
 ```
+```
+.outer-container {
+    @include clearfix();
+    ...
+}
+```
