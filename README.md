@@ -107,9 +107,7 @@ $grid-large: 1000px;
 /**
  * PRODUCT LIST
  */
-.product-list {
-
-}
+.product-list {}
 
     
     .product-list__product {
@@ -124,8 +122,9 @@ $grid-large: 1000px;
             width: 25%;
         }
     }
-``` 
-`setup/_mixins.scss`
+```
+- `@import "modules/product-list";`
+- `setup/_mixins.scss`
 ```
 /**
  * MIXINS & UTILITIES
@@ -156,4 +155,19 @@ $grid-large: 1000px;
     padding: 0;
 }
 ```
+- `@import "setup/mixins";`
+```
+.product-list {
+    @include clearfix();
+}
+```
+```
+aside {
 
+...
+
+    ul {
+        @include unlist();
+    }
+}
+```
